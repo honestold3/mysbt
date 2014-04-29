@@ -1,0 +1,52 @@
+[debug] 
+[debug] Initial source changes: 
+[debug] 	removed:Set()
+[debug] 	added: Set(/Users/wq/IdeaProjects/mysbt/src/main/scala/org/wq/mysbt/demo/Hello.scala)
+[debug] 	modified: Set()
+[debug] Removed products: Set()
+[debug] Modified external sources: Set()
+[debug] Modified binary dependencies: Set()
+[debug] Initial directly invalidated sources: Set(/Users/wq/IdeaProjects/mysbt/src/main/scala/org/wq/mysbt/demo/Hello.scala)
+[debug] 
+[debug] Sources indirectly invalidated by:
+[debug] 	product: Set()
+[debug] 	binary dep: Set()
+[debug] 	external source: Set()
+[debug] All initially invalidated sources: Set(/Users/wq/IdeaProjects/mysbt/src/main/scala/org/wq/mysbt/demo/Hello.scala)
+[debug] Recompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources
+[info] Compiling 1 Scala source to /Users/wq/IdeaProjects/mysbt/target/scala-2.10/classes...
+[debug] Getting compiler-interface from component compiler for Scala 2.10.3
+[debug] Plain interface to Scala compiler 2.10.3  with arguments: 
+[debug] 	-nowarn
+[debug] 	-d
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_1b4171a7
+[debug] 	-bootclasspath
+[debug] 	/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/classes:/Users/wq/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.3.jar
+[debug] 	-classpath
+[debug] 	/Users/wq/.sbt/boot/scala-2.10.2/org.scala-sbt/sbt/0.13.0/xsbti/interface-0.13.0.jar:/Users/wq/.sbt/boot/scala-2.10.2/org.scala-sbt/sbt/0.13.0/compiler-interface-src/compiler-interface-src-0.13.0.jar:/Users/wq/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.10.3.jar:/Users/wq/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.3.jar:/Users/wq/.ivy2/cache/org.scala-lang/jline/jars/jline-2.10.3.jar:/Users/wq/.ivy2/cache/org.fusesource.jansi/jansi/jars/jansi-1.4.jar
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/API.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/Analyzer.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/Command.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/Compat.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/CompilerInterface.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/ConsoleInterface.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/DelegatingReporter.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/ExtractAPI.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/LocateClassFile.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/Log.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/Message.scala
+[debug] 	/var/folders/f0/748_wpqd5wsbmxwnkjzsglj40000gn/T/sbt_90aaaff6/xsbt/ScaladocInterface.scala
+[debug] Getting compiler-interface from component compiler for Scala 2.10.3
+[debug] Running cached compiler 5e2e99df, interfacing (CompilerInterface) with Scala compiler version 2.10.3
+[debug] Calling Scala compiler with arguments  (CompilerInterface):
+[debug] 	-bootclasspath
+[debug] 	/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home/jre/classes:/Users/wq/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.3.jar
+[debug] 	-classpath
+[debug] 	/Users/wq/IdeaProjects/mysbt/target/scala-2.10/classes
+[debug] Scala compilation took 12.490214 s
+[debug] Invalidated by transitive public inheritance: Set(/Users/wq/IdeaProjects/mysbt/src/main/scala/org/wq/mysbt/demo/Hello.scala)
+[debug] Invalidated by direct dependency: Set()
+[debug] New invalidations:
+[debug] 	Set()
+[debug] Previously invalidated, but (transitively) depend on new invalidations:
+[debug] 	Set()
