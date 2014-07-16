@@ -2,9 +2,14 @@ name := "mysbt"
 
 version := "1.0"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.10.4"
 
-libraryDependencies += "org.scalatest" % "scalatest_2.10" % "2.1.0" % "test"
+libraryDependencies ++= Seq(
+  "org.scalatest" % "scalatest_2.10" % "2.2.0" % "test",
+  "com.google.protobuf" % "protobuf-java" % "2.4.1",
+  "org.apache.spark" % "spark-assembly_2.10" % "1.0.0"
+  //"junit" % "junit" % "4.7 "
+  )
 
 resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 
