@@ -29,7 +29,7 @@ public class CallableAndFuture {
         FutureTask<Integer> future = new FutureTask<Integer>(callable);
         new Thread(future).start();
         try {
-            Thread.sleep(1000);// 可能做一些事情
+            Thread.sleep(1000);//
             System.out.println(future.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class CallableAndFuture {
             }
         });
         try {
-            Thread.sleep(1000);// 可能做一些事情
+            Thread.sleep(1000);//
             System.out.println(future.get());
             if(future.isDone()){
                 System.out.println("kankan");
@@ -71,7 +71,7 @@ public class CallableAndFuture {
             });
         }
         threadPool.shutdown();
-        // 可能做一些事情
+        //
         for(int i = 1; i < 5000; i++) {
             try {
                 System.out.println("kankan:"+cs.take().get());
