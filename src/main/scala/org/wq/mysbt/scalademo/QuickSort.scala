@@ -1,5 +1,7 @@
 package org.wq.mysbt.scalademo
 
+import scala.collection.mutable.ListBuffer
+
 /**
   * Created by wq on 15/12/13.
   */
@@ -10,7 +12,20 @@ object QuickSort extends App{
       xs
     }else{
       val pivot = xs(xs.length/2)
-      Array.concat(sort(xs.filter(pivot >)),xs.filter(pivot ==),sort(xs.filter(pivot <)))
+
+      val a1 = new ListBuffer[Int]()
+      val a2 = new ListBuffer[Int]()
+      val a3 = new ListBuffer[Int]()
+
+      xs.foreach{
+        case x if x < pivot => a1+=x
+        case y if y == pivot => a2+=y
+        case z if z > pivot => a3+=z
+        case _ => null
+      }
+
+      Array.concat(sort(a1.toArray),a2.toArray,sort(a3.toArray))
+      //Array.concat(sort(xs.filter(pivot >)),xs.filter(pivot ==),sort(xs.filter(pivot <)))
     }
   }
 
