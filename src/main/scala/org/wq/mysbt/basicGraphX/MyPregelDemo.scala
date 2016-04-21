@@ -21,6 +21,11 @@ object MyPregelDemo {
 //
 //    val gg = g.mapVertices((vid: VertexId, attr: Int) => 1.0)
 
+//    4,5
+//    0,1
+//    1,4
+//    3,3
+//    5,0
     val vertexLines: RDD[String] = sc.textFile("hdfs://honest:8020/graphdata/pregel-vertices.txt")
     val vertices: RDD[(VertexId, Long)] = vertexLines.map{
       line => {
@@ -29,6 +34,23 @@ object MyPregelDemo {
       }
     }
 
+//    0,2,1.0
+//    1,0,1.0
+//    1,0,1.0
+//    1,2,1.0
+//    1,2,1.0
+//    2,0,1.0
+//    2,1,1.0
+//    2,4,1.0
+//    2,4,1.0
+//    2,5,1.0
+//    3,0,1.0
+//    3,4,1.0
+//    3,5,1.0
+//    4,0,1.0
+//    4,0,1.0
+//    4,3,1.0
+//    4,4,1.0
     val format = new java.text.SimpleDateFormat("yyyy/MM/dd")
     val edgeLines: RDD[String] = sc.textFile("hdfs://honest:8020/graphdata/pregel-edge.txt")
     val edges:RDD[Edge[Double]] = edgeLines.map(line => {
