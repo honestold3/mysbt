@@ -75,10 +75,13 @@ object MapReduceTripletsDemo {
     val k = g.mapReduceTriplets(
       //Map
       (edge:EdgeTriplet[Int, (String,String)]) => {
-        val src = Iterator((edge.srcId, edge.srcAttr))
+        //val src = Iterator((edge.srcId, edge.srcAttr))
+//        edge.srcAttr
+//        edge.dstAttr
+//        edge.attr
         val dst = Iterator((edge.dstId, edge.srcAttr+edge.dstAttr))
-        src ++ dst
-        //dst
+        //src ++ dst
+        dst
       },
       //Reduce
       (a1:Int, a2:Int) => {println(s"$a1,,,$a2"); a1 + a2 }

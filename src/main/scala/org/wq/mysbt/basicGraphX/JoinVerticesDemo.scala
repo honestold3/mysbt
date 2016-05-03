@@ -31,7 +31,7 @@ object JoinVerticesDemo {
     }
 
     // 先将图中的顶点属性置空,再使用joinVertices操作，用user中的属性替换图中对应Id的属性
-    val graph2 = graph.mapVertices((id, attr) => "").joinVertices(users){(vid, empty, user) => user}
+    val graph2 = graph.mapVertices((id, attr) => "default").joinVertices(users){(vid, empty, user) => user}
     println("\n\n~~~~~~~~~ Confirm Vertices Internal of graph2 ")
     graph2.vertices.collect.foreach(println(_))
     graph2.edges.collect.foreach(println _)

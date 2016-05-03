@@ -80,7 +80,7 @@ object MyPregelDemo {
     println(sssp.vertices.collect.mkString("\n"))
     */
 
-    val sourceId: VertexId = 42 // The ultimate source
+    val sourceId: VertexId = 0 // The ultimate source
 
     // Initialize the graph such that all vertices except the root have distance infinity.
     val initialGraph : Graph[(Double, List[VertexId]), Double] = graph.mapVertices {
@@ -90,21 +90,30 @@ object MyPregelDemo {
     println("-----------------------------kankan---------------------------")
     initialGraph.triplets.collect().foreach(println)
 
-    //val sssp = initialGraph.pregel((Double.PositiveInfinity, List[VertexId]()), Int.MaxValue, EdgeDirection.Out)(
-    val sssp = initialGraph.pregel((Double.PositiveInfinity,List[VertexId]()))(
-      // Vertex Program
-      (id, dist, newDist) => if (dist._1 < newDist._1) dist else newDist,
-
-      // Send Message
+    def vertexProgram: (VertexId, (Double, List[VertexId]), (Double, List[VertexId])) => (Double, List[VertexId]) = {
+      (id, dist, newDist) => if (dist._1 < newDist._1) dist else newDist
+    }
+    def SendMessage: (EdgeTriplet[(Double, List[VertexId]), Double]) => Iterator[(VertexId, (Double, List[VertexId]))] = {
       triplet => {
-        if (triplet.srcAttr._1 + triplet.attr  < triplet.dstAttr._1) {
-          Iterator((triplet.dstId, (triplet.srcAttr._1 + triplet.attr , triplet.srcAttr._2 :+ triplet.dstId)))
+        if (triplet.srcAttr._1 + triplet.attr < triplet.dstAttr._1) {
+          Iterator((triplet.dstId, (triplet.srcAttr._1 + triplet.attr, triplet.srcAttr._2 :+ triplet.dstId)))
         } else {
           Iterator.empty
         }
-      },
+      }
+    }
+    def MergeMessage: ((Double, List[VertexId]), (Double, List[VertexId])) => (Double, List[VertexId]) = {
+      (a, b) => if (a._1 < b._1) a else b
+    }
+    //val sssp = initialGraph.pregel((Double.PositiveInfinity, List[VertexId]()), Int.MaxValue, EdgeDirection.Out)(
+    val sssp = initialGraph.pregel((Double.PositiveInfinity,List[VertexId]()))(
+      // Vertex Program
+      vertexProgram,
+      // Send Message
+      SendMessage,
       //Merge Message
-      (a, b) => if (a._1 < b._1) a else b)
+      MergeMessage
+    )
     println(sssp.vertices.collect.mkString("\n"))
 
     sc.stop()
