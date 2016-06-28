@@ -82,7 +82,7 @@ object MyPregelDemo {
 
     val sourceId: VertexId = 0 // The ultimate source
 
-    // Initialize the graph such that all vertices except the root have distance infinity.
+    // Initialize the graph such that all vertices except the root have distance infinity
     val initialGraph : Graph[(Double, List[VertexId]), Double] = graph.mapVertices {
       (id, _) => if (id == sourceId) (0.0, List[VertexId](sourceId)) else (Double.PositiveInfinity, List[VertexId]())
     }

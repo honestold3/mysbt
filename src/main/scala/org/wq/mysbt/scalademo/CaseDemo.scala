@@ -35,7 +35,7 @@ object CaseDemo extends App{
     val list = List((1,"1"),(2,"2"))
     val list2 = {
       val dd = list.filter{
-        case (x: Int,y: String) => x>3  //在第一个case没有满足时，第二个case要判断，很重要
+        case (x: Int,y: String) => x>3  //哈哈在第一个case没有满足时，第二个case要判断，很重要
       }
       dd.isEmpty match {
         case true => 0

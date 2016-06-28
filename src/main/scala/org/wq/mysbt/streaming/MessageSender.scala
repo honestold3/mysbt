@@ -21,14 +21,15 @@ object MessageSender {
 
   def index = {
     val rdm = new Random
-    rdm.nextInt(7)
+    rdm.nextInt(26)
   }
 
   def main(args: Array[String]){
-    if(args.length != 2){
+    if(args.length < 1){
       System.out.println("Usage: <port> <millisecond>")
       System.exit(1)
     }
+    println(" Starting...")
 
     val listener = new ServerSocket(args(0).toInt)
     while(true){

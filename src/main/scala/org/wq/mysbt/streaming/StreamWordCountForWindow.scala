@@ -19,8 +19,8 @@ object StreamWordCountForWindow {
     }
 
     val conf = new SparkConf()
-    conf.setMaster("spark://cloud38:7077")
-      //conf.setMaster("spark://honest:8888")
+    //conf.setMaster("spark://cloud38:7077")
+      conf.setMaster("spark://honest:7077")
       .setAppName("StreamWordCountForWindow")
       .set("spark.executor.memory","1g")
       //.setSparkHome("/Users/wq/opt/spark-1.0.1-bin-hadoop2")

@@ -12,15 +12,17 @@ import org.apache.spark.rdd.RDD
 object EdgeDemo {
 
   def main(args: Array[String]) {
-    println(args(0))
-    println(args(1))
+    //println(args(0))
+    //println(args(1))
     val conf = new SparkConf()
     val sc = new SparkContext("local", "DegeDemo", conf)
+
 
 //    1 2
 //    2 3
 //    3 1
     val graph = GraphLoader.edgeListFile(sc, "hdfs://honest:8020/graphdata/edges.txt").cache()
+
 
     //不带属性的边，其属性会属性默认为1
     println("\n\n~~~~~~~~~ Confirm Edges Internal of graph ")

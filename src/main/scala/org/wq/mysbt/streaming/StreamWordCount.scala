@@ -1,7 +1,7 @@
 package org.wq.mysbt.streaming
 
 import org.apache.spark.SparkContext.IntAccumulatorParam
-import org.apache.spark.sql.hive.HiveContext
+//import org.apache.spark.sql.hive.HiveContext
 import org.apache.spark.{Accumulator, SparkContext, SparkConf}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.storage.StorageLevel
@@ -31,7 +31,7 @@ object StreamWordCount {
       .setJars(List(SparkContext.jarOfClass(this.getClass).getOrElse("")))
     val sc = new SparkContext(conf)
     val ssc = new StreamingContext(sc,Seconds(args(2).toInt))
-    val sqlsc = new HiveContext(sc)
+    //val sqlsc = new HiveContext(sc)
     //val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
 
     //val sc = ssc.sparkContext
@@ -41,18 +41,19 @@ object StreamWordCount {
     //val lines = ssc.socketTextStream(args(0), args(1).toInt)
     val words = lines.flatMap(_.split(" "))
     words.foreachRDD{rdd =>
-      val sqlContext = SQLContextSingleton.getInstance(rdd.sparkContext)
-      import sqlContext.implicits._
-      sqlContext.sql("select count(*) from person").foreach(x =>println("kankan11:"+x))
+      //val sqlContext = SQLContextSingleton.getInstance(rdd.sparkContext)
+      //import sqlContext.implicits._
+      //sqlContext.sql("select count(*) from person").foreach(x =>println("kankan11:"+x))
+      println(rdd)
     }
     val wordCounts = words.map{x => accum +=1; (x, 1)}.reduceByKey(_ + _)
 
-    println("kkkkk:"+accum.value)
+    println("kkkkkk:"+accum.value)
     //sc.parallelize(accum.value+"").saveAsTextFile("hdfs://master2:8020/user/tescomm/bao/kankan/abc/")
 
     //wordCounts.saveAsTextFiles("hdfs://honest:8020/streaming/")
     wordCounts.print()
-    sqlsc.sql("select count(*) from person").foreach(x =>println("kankan:"+x))
+    //sqlsc.sql("select count(*) from person").foreach(x =>println("kankan:"+x))
     ssc.start()
     ssc.awaitTermination()
   }
@@ -64,7 +65,7 @@ object SQLContextSingleton {
   // Instantiate SQLContext on demand
   def getInstance(sparkContext: SparkContext): SQLContext = synchronized {
     if (instance == null) {
-      instance = new HiveContext(sparkContext)
+      //instance = new HiveContext(sparkContext)
     }
     instance
   }

@@ -33,12 +33,12 @@ public  class SortTask extends RecursiveAction {
 
     protected void compute() {
 
-        //如果数据量比较少,就直接使用系统的排序方式
+        //????????,????????????
         if (hi - lo < THRESHOLD)
             sequentiallySort(array, lo, hi);
         else {
             int pivot = partition(array, lo, hi);
-            //把数组切分成两部分,然后在分别做排序
+            //?????????,????????
             this.invokeAll(new SortTask(array,
                     pivot + 1, hi), new SortTask(array, lo, pivot - 1))   ;
 
@@ -87,10 +87,10 @@ public  class SortTask extends RecursiveAction {
 
         sequentiallySort(array,0,array.length-1);
 
-        System.out.println("自然排序消耗时间为：" +( System.currentTimeMillis() - t1) );
+        System.out.println("??????????" +( System.currentTimeMillis() - t1) );
 
 
-        //重新赋值
+        //????
 
 //        for(int i=0;i<length;i++){
 //            array[i]=r.nextInt(19087);
@@ -101,6 +101,6 @@ public  class SortTask extends RecursiveAction {
 //        fjpool.submit(sort);
 //        fjpool.shutdown();
 //        fjpool.awaitTermination(30, TimeUnit.SECONDS);
-//        System.out.print("fork/join并行消耗时间为："+(System.currentTimeMillis()-t2));
+//        System.out.print("fork/join????????"+(System.currentTimeMillis()-t2));
     }
 }

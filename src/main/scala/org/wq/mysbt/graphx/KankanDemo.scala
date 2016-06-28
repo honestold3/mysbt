@@ -45,23 +45,23 @@ object KankanDemo {
 
     println("---------------------------------------------------------")
 
-//    val sssp = graph.pregel((Long,List[VertexId]()))(
-//      // Vertex Program
-//      (id, dist, newDist) => dist,
-//
-//      // Send Message
-//      triplet => {
-////        if (triplet.srcAttr._1 < triplet.dstAttr._1 - triplet.attr ) {
-////          Iterator((triplet.dstId, (triplet.srcAttr._1 + triplet.attr , triplet.srcAttr._2 :+ triplet.dstId)))
-////        } else {
-////          Iterator.empty
-////        }
-//        Iterator((triplet.dstId, (triplet.dstId , triplet.attr._1 +":"+ triplet.attr._2)))
-//      },
-//      //Merge Message
-//      (a, b) => b)
-//    println(sssp.vertices.collect.mkString("\n"))
+    /*val sssp = graph.pregel((Long,List[VertexId]()))(
+      // Vertex Program
+      (id, dist, newDist) => dist,
 
+      // Send Message
+      triplet => {
+//        if (triplet.srcAttr._1 < triplet.dstAttr._1 - triplet.attr ) {
+//          Iterator((triplet.dstId, (triplet.srcAttr._1 + triplet.attr , triplet.srcAttr._2 :+ triplet.dstId)))
+//        } else {
+//          Iterator.empty
+//        }
+        Iterator((triplet.dstId, (triplet.dstId , triplet.attr._1 +":"+ triplet.attr._2)))
+      },
+      //Merge Message
+      (a, b) => b)
+    println(sssp.vertices.collect.mkString("\n"))
+*/
 
     val am = graph.aggregateMessages[(String, String)](
       triplet => { // Map Function

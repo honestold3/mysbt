@@ -14,15 +14,19 @@ object HdfsWordCount {
       System.exit(1)
     }
     val conf = new SparkConf()
-    conf.setMaster("spark://honest:8888")
+    conf.setMaster("spark://honest:7077")
     .setAppName("HdfsWordCount")
     .set("spark.executor.memory","1g")
-    .setSparkHome("/Users/wq/opt/spark-1.0.1-bin-hadoop2")
+    //.setSparkHome("/Users/wq/opt/spark-1.0.1-bin-hadoop2")
     //.setSparkHome("/Users/wq/opt/spark-1.0.0-bin-hadoop2")
     .setJars(List(SparkContext.jarOfClass(this.getClass).getOrElse("")))
     val ssc = new StreamingContext(conf,Seconds(args(1).toInt))
     val lines = ssc.textFileStream(args(0))
+    //lines.dependencies
     val words = lines.flatMap(_.split(" "))
+    words.mapPartitions{
+      iter => iter.map(x => (x, 1))
+    }.repartition(4)
     val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
     println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     wordCounts.print()

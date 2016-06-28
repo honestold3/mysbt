@@ -27,9 +27,13 @@ object QuickSort extends App{
       Array.concat(sort(a1.toArray),a2.toArray,sort(a3.toArray))
       //Array.concat(sort(xs.filter(pivot >)),xs.filter(pivot ==),sort(xs.filter(pivot <)))
     }
+
+
   }
 
   val arr = Array(4,6,9,2,8,3)
-  sort(arr).map(println _)
+  //sort(arr).map(println _)
+
+  sort(Array(4,5,3,1,8,6,0)).map(println _)
 
 }

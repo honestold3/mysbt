@@ -15,10 +15,11 @@ object StatefulStreamWordCount {
     }
 
     val conf = new SparkConf()
-    conf.setMaster("spark://honest:8888")
+    conf.setMaster("spark://honest:7077")
       .setAppName("StatefulStreamWordCount")
       .set("spark.executor.memory","1g")
-      .setSparkHome("/Users/wq/opt/spark-1.0.1-bin-hadoop2")
+      .set("spark.streaming.concurrentJobs","1")
+      //.setSparkHome("/Users/wq/opt/spark-1.0.1-bin-hadoop2")
       //.setSparkHome("/Users/wq/opt/spark-1.0.0-bin-hadoop2")
       .setJars(List(SparkContext.jarOfClass(this.getClass).getOrElse("")))
 
@@ -32,14 +33,17 @@ object StatefulStreamWordCount {
 
     //创建StreamingContext
     val ssc = new StreamingContext(conf,Seconds(args(2).toInt))
-    ssc.checkpoint("/Users/wq/spark")
-
+    //ssc.checkpoint("/Users/wq/spark")
+    ssc.checkpoint(".")
     //创建NetworkInputDStream，需要指定ip和端口
     val lines = ssc.socketTextStream(args(0), args(1).toInt)
     val words = lines.flatMap(_.split(" "))
-    val wordDstream = words.map(x => (x, 1))
+    //val wordDstream = words.map{x =>  Thread.sleep(30000);(x, 1)}
+    val wordDstream = words.map{x => (x, 1)}
 
     //使用updateStateByKey来更新状态
+    val ll = Option(2)
+    val list = List(1,2)
     val stateDstream = wordDstream.updateStateByKey[Int](updateFunc)
     stateDstream.print()
     ssc.start()

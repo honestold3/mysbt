@@ -27,11 +27,15 @@ object SparkSqlDemo {
 
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
-    import sqlContext.createSchemaRDD
+    //import sqlContext.createSchemaRDD
+    import sqlContext.implicits._
 
-    val people =sc.textFile("hdfs://honest:8020/sql/sqldata").map(_.split(" ")).map(p => Person(p(0),p(1).trim.toInt))
+    //
+    // val people =sc.textFile("hdfs://honest:8020/sql/sqldata").map(_.split(" ")).map(p => Person(p(0),p(1).trim.toInt))
 
-    people.registerAsTable("people")
+    val people =sc.textFile("hdfs://honest:8020/sql/sqldata").map(_.split(" ")).map(p => Person(p(0),p(1).trim.toInt)).toDF()
+    //people.registerAsTable("people")
+    people.registerTempTable("people")
 
     sqlContext.cacheTable("people")
     val kankan =sqlContext.sql("SELECT name FROM people WHERE age >= 20 AND age <= 30")
@@ -43,7 +47,9 @@ object SparkSqlDemo {
     val record = new Record("01", "02", "03", "04", "05", "06", "07", "08", "09",
       "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24")
 
-    sc.parallelize(record :: Nil).registerAsTable("records")
+    //sc.parallelize(record :: Nil).registerAsTable("records")
+
+    sc.parallelize(record :: Nil).toDF().registerTempTable("records")
 
     sqlContext.sql("SELECT * FROM records").collect().foreach(println)
   }
