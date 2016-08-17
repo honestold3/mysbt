@@ -1,6 +1,5 @@
 package org.wq.mysbt.sql
 
-import org.wq.mysbt.sql.Record
 
 /**
  * Created by wq on 14-7-21.

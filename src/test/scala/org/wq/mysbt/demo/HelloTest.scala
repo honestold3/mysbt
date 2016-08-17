@@ -7,10 +7,10 @@ import org.scalatest.FunSuite
  */
 class HelloTest extends FunSuite{
 
-  test("hehe"){
-    val hello = new Hello
-    assert(hello.sayHello("scala") == "hello,scala")
-  }
+//  test("hehe"){
+//    val hello = new Hello
+//    assert(hello.sayHello("scala") == "hello,scala")
+//  }
 
   //(new HelloTest).execute
 

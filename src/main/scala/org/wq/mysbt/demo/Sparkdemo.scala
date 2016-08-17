@@ -75,25 +75,25 @@ object Sparkdemo {
     aaaa.saveToEs("/data/kankan")
     println("end")
 
-    val xmlFile =
-      <symbols>
-        <symbol ticker="AAPL">
-          <units>200</units>
-        </symbol>
-
-        <units>300</units>
-
-        <symbol ticker="IBM">
-          <units>400</units>
-        </symbol>
-      </symbols>
-
-    xmlFile match {
-      case <symbols>{allSymbol @ _*}</symbols> =>
-        for(symbolNode@ <symbol>{_*}</symbol> <- allSymbol){
-          println(symbolNode \"@ticker")
-          println(symbolNode \"units" text)
-        }
-    }
+//    val xmlFile =
+//      <symbols>
+//        <symbol ticker="AAPL">
+//          <units>200</units>
+//        </symbol>
+//
+//        <units>300</units>
+//
+//        <symbol ticker="IBM">
+//          <units>400</units>
+//        </symbol>
+//      </symbols>
+//
+//    xmlFile match {
+//      case <symbols>{allSymbol @ _*}</symbols> =>
+//        for(symbolNode@ <symbol>{_*}</symbol> <- allSymbol){
+//          println(symbolNode \"@ticker")
+//          println(symbolNode \"units" text)
+//        }
+//    }
   }
 }

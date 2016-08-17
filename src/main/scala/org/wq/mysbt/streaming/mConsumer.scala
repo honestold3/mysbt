@@ -3,7 +3,7 @@ package org.wq.mysbt.streaming
 import java.text.SimpleDateFormat
 import java.util.{Properties, Calendar}
 
-import kafka.producer.{KeyedMessage, Producer, ProducerConfig}
+import kafka.producer._
 import kafka.serializer.StringDecoder
 
 //import scala.collection.mutable.Map
