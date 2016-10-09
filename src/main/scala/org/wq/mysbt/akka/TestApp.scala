@@ -15,7 +15,7 @@ class ChildActor extends Actor {
   def receive = {
     case ExecutionMessage(msg) =>
       println(msg) //fake real execution logic
-      sender ! FinishedMessage("kill me")
+      sender ! FinishedMessage("kill me!")
   }
 }
 class ParentActor extends Actor {
