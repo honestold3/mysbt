@@ -41,6 +41,7 @@ object Sparkdemo {
 
     val a = sc.parallelize(list).cache()
 
+
     val ddd = "eee"
     println(a.count())
 

@@ -22,6 +22,7 @@ class DavidBanner extends Actor{
       println("Phew, I'm back to being David")
       become(normalState)
       println(s"ending:$a")
+    case "a" => println("haha")
   }
 
   def normalState: Receive = {
@@ -30,13 +31,13 @@ class DavidBanner extends Actor{
     case BadGuysMakeMeAngry =>
       println("I'm getting angry...")
       become(angryState)
-    //case "a" => println("kankan")
+    case "a" => println("kankan")
   }
 
   def receive = {
     case BadGuysMakeMeAngry => become(angryState)
     case ActNormalMessage=> become(normalState)
-    //case "a" => println("qqq")
+    case "a" => println("qqq")
   }
 }
 
@@ -44,7 +45,7 @@ object BecomeHulkExample extends App{
 
   val system = ActorSystem("BecomeHulkExample")
   val davidBanner = system.actorOf(Props[DavidBanner],name="DavidBanner")
-  //davidBanner ! "a"
+  davidBanner ! "a"
   davidBanner ! ActNormalMessage //init to normalState
 
   davidBanner ! TryToFindSolution

@@ -11,6 +11,8 @@ import ElasticDsl._
 /**
   * Created by wq on 16/6/4.
   */
+
+
 object ElasticTest extends App{
 
   //val client = ElasticClient.local

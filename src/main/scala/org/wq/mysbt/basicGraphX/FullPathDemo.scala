@@ -36,20 +36,20 @@ object FullPathDemo {
 
     //graph.pregel(List[String]())(vertexProgram,sendMessage,MergeMessage)
 
-    //创建点RDD
+
     val vertex: RDD[(VertexId, List[String])] = sc.parallelize(Array(
       (3L, List("3")), (7L, List("7")),(4L,List("4")),
       (5L, List("5")), (2L, List("2"))
     )
     )
-    //创建边RDD
+
     val edge: RDD[Edge[List[String]]] = sc.parallelize(Array(
       Edge(2L, 3L, List("a")), //Edge(3L, 7L, List("b")),Edge(2L,5L,List("e")),
       Edge(2L, 4L, List("c")), Edge(4L, 7L, List("d"))
     )
     )
 
-    //构造Graph
+
     val g = Graph(vertex, edge)
 
     val start = "2"

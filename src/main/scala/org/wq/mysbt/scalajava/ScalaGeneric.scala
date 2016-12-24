@@ -19,7 +19,7 @@ class ScalaGeneric {
 }
 
 object MainGeneric extends App{
-  val s=new ScalaGeneric
+  val s = new ScalaGeneric
   s.printList(JavaGeneric.getList)
   println("-----------------------------")
   s.printList2(JavaGeneric.getList)

@@ -7,7 +7,7 @@ import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 
 public class KafkaProducer {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		Properties props = new Properties();
 		//
 		//props.put("metadata.broker.list", "192.168.1.170:9092,192.168.1.171:9092,192.168.1.172:9092");

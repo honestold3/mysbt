@@ -10,6 +10,7 @@ import ElasticDsl._
 /**
   * Created by wq on 16/6/5.
   */
+
 object Test extends App{
   //val client = ElasticClient.local
   val client = ElasticClient.remote("honest", 9300)
@@ -21,3 +22,4 @@ object Test extends App{
   val resp = client.execute { search in "library/book" query "1" }.await
   println(resp)
 }
+

@@ -32,22 +32,22 @@ object HipiDemo {
     println("11111111")
     val aa = sc.newAPIHadoopFile[HipiImageHeader,HipiImage,HibInputFormat]("hdfs://honest:8020/hipi/sampleimages.hib")
     println("2222222");
-    val cc = aa.map{
-      case (x: HipiImageHeader,y: FloatImage)=>
-        //val im = y
-        println("start image")
-        println("hei:"+y.getHeight)
-        val cvImage: Mat  = new Mat(y.getHeight, y.getWidth, opencv_core.CV_32FC1)
-
-        (NullWritable.get, new OpenCVMatWritable(cvImage))
-
-      case _ => println("mmmmmmmmmm");("","")
-    }
-
-
-    cc.saveAsNewAPIHadoopFile("hdfs://honest:8020/dw4",
-      classOf[NullWritable],classOf[OpenCVMatWritable],classOf[BinaryOutputFormat[NullWritable, OpenCVMatWritable]])
-
+//    val cc = aa.map{
+//      case (x: HipiImageHeader,y: FloatImage)=>
+//        //val im = y
+//        println("start image")
+//        println("hei:"+y.getHeight)
+//        val cvImage: Mat  = new Mat(y.getHeight, y.getWidth, opencv_core.CV_32FC1)
+//
+//        (NullWritable.get, new OpenCVMatWritable(cvImage))
+//
+//      case _ => println("mmmmmmmmmm");("","")
+//    }
+//
+//
+//    cc.saveAsNewAPIHadoopFile("hdfs://honest:8020/dw4",
+//      classOf[NullWritable],classOf[OpenCVMatWritable],classOf[BinaryOutputFormat[NullWritable, OpenCVMatWritable]])
+//
     val aaa = sc.newAPIHadoopFile[LongWritable, Text, ETLLineInputFormat]("hdfs://honest:8020/data")
 
     aaa.map[(Int,Int)] {

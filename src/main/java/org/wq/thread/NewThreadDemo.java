@@ -29,12 +29,13 @@ public class NewThreadDemo {
             @Override
             public String call() throws Exception {
                 System.out.println("new t3");
+                Thread.sleep(3000);
                 return "kankan";
             }
         });
         Thread t3 = new Thread(ft);
         t3.start();
-        System.out.println(ft.get());
+        //System.out.println("hehe:"+ft.get());
 
 
         FutureTask<String> ft1 = null;

@@ -38,9 +38,11 @@ object MapReduceTripletsDemo {
 
     val graph:Graph[(String, Long), (Long, java.util.Date)] = Graph(vertices, edges)
 
-    // 使用mapReduceTriplets来生成新的VertexRDD
-    // 利用map对每一个三元组进行操作
-    // 利用reduce对相同Id的顶点属性进行操作
+    /**
+      *使用mapReduceTriplets来生成新的VertexRDD
+      *利用map对每一个三元组进行操作
+      *利用reduce对相同Id的顶点属性进行操作
+      */
     val newVertices:VertexRDD[Long] = graph.mapReduceTriplets(
       mapFunc = (edge:EdgeTriplet[(String, Long), (Long, java.util.Date)]) => {
         val toSrc = Iterator((edge.srcId, edge.srcAttr._2 - edge.attr._1+1))
@@ -59,9 +61,7 @@ object MapReduceTripletsDemo {
     //    (2,300)
 
 
-    //创建点RDD
     val v: RDD[(VertexId, Int)] = sc.parallelize(Array( (1L, 1), (2L, 2),(3L, 3), (4L, 4)))
-    //创建边RDD
     val e: RDD[Edge[(String,String)]] = sc.parallelize(Array(
       //Edge(1L, 2L, ("A","C")),
       //Edge(1L, 3L, ("A","B")),

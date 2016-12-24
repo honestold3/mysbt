@@ -10,7 +10,8 @@ import scala.concurrent.Future
 /**
   * Created by wq on 16/6/5.
   */
-class CreateIndex extends ElasticDsl{
+
+class CreateIndex extends ElasticDsl {
 
   val client = ElasticClient.remote("127.0.0.1", 9300)
 
@@ -23,7 +24,7 @@ class CreateIndex extends ElasticDsl{
 
     client.execute {
       create index "images" shards 2 replicas 1 mappings (
-        "exif" as (
+        "exif" as(
           field("taken") typed DateType,
           field("filename") typed StringType,
           field("path") typed StringType,

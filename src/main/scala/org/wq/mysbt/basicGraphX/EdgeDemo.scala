@@ -24,7 +24,7 @@ object EdgeDemo {
     val graph = GraphLoader.edgeListFile(sc, "hdfs://honest:8020/graphdata/edges.txt").cache()
 
 
-    //不带属性的边，其属性会属性默认为1
+
     println("\n\n~~~~~~~~~ Confirm Edges Internal of graph ")
     graph.edges.collect.foreach(println(_))
 //    Edge(1,2,1)
@@ -32,7 +32,7 @@ object EdgeDemo {
 //    Edge(3,1,1)
 
 
-    //只输入边的Id信息，则顶点属性默认为1
+
     println("\n\n~~~~~~~~~ Confirm Vertices Internal of graph ")
     graph.vertices.collect.foreach(println(_))
 //    (1,1)

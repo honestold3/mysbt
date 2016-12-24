@@ -29,7 +29,7 @@ public class TestAnonymousInterClass {
         Runnable r = new Runnable(){
             @Override
             public void run() {
-                System.out.println("haha");
+                System.out.println("---haha---");
             }
         };
         Thread t = new Thread(r);
@@ -37,7 +37,7 @@ public class TestAnonymousInterClass {
     }
 
     public static void test3(final String str){ //拷贝引用，为了避免引用值发生改变，例如被外部类的方法修改等，
-    // 而导致内部类得到的值不一致，于是用final来让该引用不可改变。
+        // 而导致内部类得到的值不一致，于是用final来让该引用不可改变。
         final String str1 = "kankan1";
         Out inner = new Out("aa"){
             //public Out(){} //匿名内部类中是不能定义构造函数的

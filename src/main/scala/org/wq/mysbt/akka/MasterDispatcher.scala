@@ -35,7 +35,13 @@ class WriterActor extends Actor {
 
   def receive = {
     case _ =>{
-      //println("ddd")
+      //
+      while(true){
+        println("kankan:"+Thread.currentThread().getName)
+        println("----ddd")
+      }
+
+      //println("----ddd")
     }
 
   }
@@ -50,23 +56,24 @@ class ControlActor extends Actor {
     case msg: StartCommand =>
       val startTime = System.currentTimeMillis()
       val actors = createActors(msg.actorCount)
-      val results = actors.map(actor => actor ? InsertCommand(100) mapTo manifest[Long])
-      val aggregate = Future.sequence(results).map(results => ExecutionResult(results.sum))
-
-      aggregate onComplete {
-        case ScalaSuccess(_) =>
-          val endTime = System.currentTimeMillis()
-          val costTime = endTime - startTime
-          println(s"It take total time ${costTime} milli seconds")
-        case ScalaFailure(_) => println("It failed.")
-      }
+//      val results = actors.map(actor => actor ? InsertCommand(100) mapTo manifest[Long])
+//      val aggregate = Future.sequence(results).map(results => ExecutionResult(results.sum))
+//
+//      aggregate onComplete {
+//        case ScalaSuccess(_) =>
+//          val endTime = System.currentTimeMillis()
+//          val costTime = endTime - startTime
+//          println(s"It take total time ${costTime} milli seconds")
+//        case ScalaFailure(_) => println("It failed.")
+//      }
   }
 
   def createActors(count: Int): List[ActorRef] = {
     val props = Props(classOf[WriterActor]).withDispatcher("writer-dispatcher")
     (1 to count).map(i => {
-      context.actorOf(props, s"writer_$i")
+      context.actorOf(props, s"writer_$i")! 1
     }).toList
+    List(context.actorOf(props, s"writerWWW"))
   }
 }
 
@@ -75,8 +82,8 @@ object MasterDispatcher {
     val system = ActorSystem("DataInitializer")
     val actor = system.actorOf(Props[ControlActor], "controller")
 
-    actor ! StartCommand(100)
+    actor ! StartCommand(10000)
 
-    //system.shutdown()
+    system.shutdown()
   }
 }

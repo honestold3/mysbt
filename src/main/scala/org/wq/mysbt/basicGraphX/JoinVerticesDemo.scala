@@ -30,7 +30,7 @@ object JoinVerticesDemo {
       }
     }
 
-    // 先将图中的顶点属性置空,再使用joinVertices操作，用user中的属性替换图中对应Id的属性
+
     val graph2 = graph.mapVertices((id, attr) => "default").joinVertices(users){(vid, empty, user) => user}
     println("\n\n~~~~~~~~~ Confirm Vertices Internal of graph2 ")
     graph2.vertices.collect.foreach(println(_))
@@ -39,7 +39,7 @@ object JoinVerticesDemo {
 //    (3,)
 //    (2,kankan1)
 
-    // 使用outerJoinVertices将user中的属性赋给graph中的顶点，如果图中顶点不在user中，则赋值为None
+
     val graph3 = graph.mapVertices((id, attr) => "").outerJoinVertices(users){(vid, empty, user) => user.getOrElse("None")}
     println("\n\n~~~~~~~~~ Confirm Vertices Internal of graph3 ")
     graph3.vertices.collect.foreach(println(_))
