@@ -63,16 +63,18 @@ object KankanDemo {
     println(sssp.vertices.collect.mkString("\n"))
 */
 
-    val am = graph.aggregateMessages[(String, String)](
-      triplet => { // Map Function
-//        if (triplet.srcAttr > triplet.dstAttr) {
-//          // Send message to destination vertex containing counter and age
-//          triplet.sendToDst(1, triplet.srcAttr)
-//        }
-        triplet.sendToSrc(triplet.srcId.toString+"-"+triplet.dstId.toString,triplet.attr.toString())
-      },
+    val am = graph.aggregateMessages[(String, String)] (
+      triplet => {
+        // Map Function
+        //        if (triplet.srcAttr > triplet.dstAttr) {
+        //          // Send message to destination vertex containing counter and age
+        //          triplet.sendToDst(1, triplet.srcAttr)
+        //        }
+        triplet.sendToSrc(triplet.srcId.toString + "-" + triplet.dstId.toString, triplet.attr.toString())
+      }
+      ,
       //Reduce Function
-      (a, b) => (a._1+";"+b._1, a._2+b._2)
+      (a, b) => (a._1 + ";" + b._1, a._2 + b._2)
     )
 
     am.collect.foreach(println(_))

@@ -41,9 +41,9 @@ object StreamWordCount {
     //val lines = ssc.socketTextStream(args(0), args(1).toInt)
     val words = lines.flatMap(_.split(" "))
     words.foreachRDD{rdd =>
-      //val sqlContext = SQLContextSingleton.getInstance(rdd.sparkContext)
-      //import sqlContext.implicits._
-      //sqlContext.sql("select count(*) from person").foreach(x =>println("kankan11:"+x))
+      val sqlContext = SQLContextSingleton.getInstance(rdd.sparkContext)
+      import sqlContext.implicits._
+      sqlContext.sql("select count(*) from person").foreach(x =>println("kankan11:"+x))
       println(rdd)
     }
     val wordCounts = words.map{x => accum +=1; (x, 1)}.reduceByKey(_ + _)
