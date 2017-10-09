@@ -36,12 +36,12 @@ class WriterActor extends Actor {
   def receive = {
     case _ =>{
       //
-      while(true){
-        println("kankan:"+Thread.currentThread().getName)
-        println("----ddd")
-      }
+//      while(true){
+//        println("kankan:"+Thread.currentThread().getName)
+//        println("----ddd")
+//      }
 
-      //println("----ddd")
+      println("----ddd")
     }
 
   }
